@@ -1,4 +1,6 @@
-package com.scrumtrek.simplestore;
+package com.scrumtrek.simplestore.report;
+
+import com.scrumtrek.simplestore.*;
 
 import java.io.InputStream;
 import java.util.HashMap;
@@ -32,15 +34,15 @@ public class ReportBuilder {
                   PriceCode pc = null;
                   switch(type) {
                       case R :
-                          pc = new RegularPriceCode(tokens[0], new Double(tokens[1]), 
+                          pc = new RegularPriceCode(tokens[0], new Double(tokens[1]),
                           new Integer(tokens[2]), new Double(tokens[3]));
                           break;
                       case C:
-                          pc = new ChildrensPriceCode(tokens[0], new Double(tokens[1]), 
+                          pc = new ChildrensPriceCode(tokens[0], new Double(tokens[1]),
                           new Integer(tokens[2]), new Double(tokens[3]));
                           break;
                       case N:
-                          pc = new NewReleasePriceCode(tokens[0], new Double(tokens[1]), 
+                          pc = new NewReleasePriceCode(tokens[0], new Double(tokens[1]),
                           new Integer(tokens[2]), new Double(tokens[3]));
                           break;
                   }
