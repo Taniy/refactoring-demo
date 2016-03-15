@@ -7,7 +7,6 @@ package com.scrumtrek.simplestore.test;
 
 import com.scrumtrek.simplestore.Movie;
 import com.scrumtrek.simplestore.PriceCode;
-import com.scrumtrek.simplestore.PriceCodes;
 import com.scrumtrek.simplestore.Rental;
 import org.junit.After;
 import org.junit.AfterClass;
@@ -49,10 +48,4 @@ public class TestRental {
         assertEquals(movie, rental.getMovie());
         assertEquals(5, rental.getDaysRented());
     }
-
-    // TODO add test methods here.
-    // The methods must be annotated with annotation @Test. For example:
-    //
-    // @Test
-    // public void hello() {}
 }

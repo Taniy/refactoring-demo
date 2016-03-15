@@ -1,43 +1,80 @@
 package com.scrumtrek.simplestore;
 
-/**
- * Created by tan on 15.03.16.
- */
-public class PriceCode {
+public abstract class PriceCode {
+    
+    public enum TYPE {
+        /**
+         * Regular
+         */
+        R,
+        
+        /**
+         * New Release
+         */
+        N,
+        
+        /**
+         * Children
+         */
+        C
+    }
+    
+    public abstract double countAmount(Rental rental);
+    
+    private String name;
+    
+    /**
+     * стоимость ренты, не зависящая от количества дней.
+     */
+    private double constPrice;
+    
+
+    /**
+     * количество дней ренты, за превышение которых начисляется доплата
+     */
+    private int days;
+    
+    /**
+     * коэффициент расчета доплаты за превышение срока ренты <param>days</param>
+     */
+    private double multiplier;
+
     public String getName() {
         return name;
     }
 
-    private String name;
-    private int days;
-    private double oneTimePrice;
-    private double koef;
-    private double freqeuntBonus = 0;
-
-    public PriceCode(String name, int days, double oneTimePrice, double koef, int freqeuntBonus)  {
+    public void setName(String name) {
         this.name = name;
+    }
+
+    public double getConstPrice() {
+        return constPrice;
+    }
+
+    public void setConstPrice(double constPrice) {
+        this.constPrice = constPrice;
+    }
+    
+    public int getDays() {
+        return days;
+    }
+
+    public void setDays(int days) {
         this.days = days;
-        this.koef = koef;
-        this.oneTimePrice = oneTimePrice;
-        this.freqeuntBonus=freqeuntBonus;
     }
 
-    public double count(int daysRented) {
-        double thisAmount = oneTimePrice;
-        if (daysRented > days)
-        {
-            thisAmount += (daysRented - days) * koef;
-        }
-        if (thisAmount < 0)
-            throw new RuntimeException("price < 0");
-        return thisAmount;
+    public double getMultiplier() {
+        return multiplier;
     }
 
-    public double getFreqeuntBonus(int daysRented) {
-        if  (daysRented > 1)
-        {
-            return freqeuntBonus;
-        }
-        return 0;
+    public void setMultiplier(double multiplier) {
+        this.multiplier = multiplier;
+    }
+
+    public PriceCode(String name, double constPrice, int days, double multiplier) {
+        this.name = name;
+        this.constPrice = constPrice;
+        this.days = days;
+        this.multiplier = multiplier;
     }
 }

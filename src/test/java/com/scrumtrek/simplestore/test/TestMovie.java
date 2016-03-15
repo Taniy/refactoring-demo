@@ -2,7 +2,6 @@ package com.scrumtrek.simplestore.test;
 
 import com.scrumtrek.simplestore.Movie;
 import com.scrumtrek.simplestore.PriceCode;
-import com.scrumtrek.simplestore.PriceCodes;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;

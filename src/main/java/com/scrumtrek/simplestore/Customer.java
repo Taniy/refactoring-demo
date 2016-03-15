@@ -20,32 +20,14 @@ public class Customer {
 		m_Rentals.add(arg);
 	}
 
-	public String Statement()
-	{
-		double totalAmount = 0;
-		int frequentRenterPoints = 0;
-				
-		String result = "Rental record for " + m_Name + "\n";
-		
-		for(Rental each: m_Rentals) {
-			double thisAmount = each.getMovie().getPriceCode().count(each.getDaysRented());
+    public List<Rental> getM_Rentals() {
+        return m_Rentals;
+    }
 
-
-			// Add frequent renter points
-			frequentRenterPoints++;
-
-			// Add bonus for a two-day new-release rental
-				frequentRenterPoints += each.getMovie().getPriceCode().getFreqeuntBonus(each.getDaysRented()) ;
-
-			// Show figures for this rental
-			result += "\t" + each.getMovie().getTitle() + "\t" + thisAmount + "\n";
-			totalAmount += thisAmount;
-		}
-
-		// Add footer lines
-		result += "Amount owed is " + totalAmount + "\n";
-		result += "You earned " + frequentRenterPoints + " frequent renter points.";
-		return result;
-	}
+    public void setM_Rentals(List<Rental> m_Rentals) {
+        this.m_Rentals = m_Rentals;
+    }
+        
+        
 }
 
