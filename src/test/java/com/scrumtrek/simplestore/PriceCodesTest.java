@@ -1,6 +1,8 @@
 package com.scrumtrek.simplestore;
 
 import java.util.UUID;
+
+import com.scrumtrek.simplestore.report.ReportBuilder;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
@@ -261,5 +263,36 @@ public class PriceCodesTest {
             assertTrue(ee.getMessage().contains("amount is less than 0!"));
         }
 
+    }
+
+
+    @Test
+    public void sholdreportJsonCorrectly() throws Exception {
+        String priceCodesSrc = "price_codes.config";
+
+// Create movies
+        Movie movStarWars = new Movie("movie", "XXX");
+
+        // Create customers
+        Customer custDonaldDuck = new Customer("Donald Duck");
+
+        // Create rentals
+        Rental rental2 = new Rental(movStarWars, 10);
+
+        // Assign rentals to customers
+        custDonaldDuck.addRental(rental2);
+
+        // Generate invoice
+        ReportBuilder rb = new ReportBuilder(priceCodesSrc);
+        String statement2 = rb.buildReportJson(custDonaldDuck);
+        String json = "customer: {\n" +
+                "\tname: Donald Duck \n" +
+                " \trentals: {\n" +
+                "\t\tmovie:movie\n" +
+                "\t\tpriceName:XXX\n" +
+                "\t\tdays:10\n" +
+                "\t\t}\n" +
+                "}";
+        assertEquals(json, statement2);
     }
 }

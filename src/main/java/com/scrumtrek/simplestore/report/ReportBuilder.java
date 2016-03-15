@@ -93,4 +93,16 @@ public class ReportBuilder {
 		result += "You earned " + frequentRenterPoints + " frequent renter points.";
 		return result;
 	}
+
+    public String buildReportJson(Customer customer) throws Exception {
+        String result = "customer: {\n" + "\tname: " + customer.getName() + " \n \trentals: {\n";
+        for (Rental rental : customer.getM_Rentals()) {
+            result += "\t\tmovie:" + rental.getMovie().getM_Title() +
+                    "\n\t\tpriceName:" + rental.getMovie().getPriceCodeName() +
+                    "\n\t\tdays:" + rental.getDaysRented() + "\n\t\t}";
+            result += "\n}";
+        }
+        return result;
+    }
+
 }
