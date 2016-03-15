@@ -1,11 +1,19 @@
 package com.scrumtrek.simplestore;
 
+import java.util.HashMap;
+
 class MainClass {
 	 static void Main(String[] args) {
+		 PriceCode regular = new PriceCode("regular", 2, 2, 1.5,0);
+		 PriceCode	 newRelease = new PriceCode("NewRelease", 3, 0, 0,1);
+		 PriceCode	 childrens = new PriceCode("child", 3, 3, 1.5,0);
+		 PriceCode	 advent  = new PriceCode("advent", 3, 3, 1.5,0);
+
 		// Create movies
-		Movie movCinderella = new Movie("Cinderella", PriceCodes.Childrens);
-		Movie movStarWars = new Movie("Star Wars", PriceCodes.Regular);
-		Movie movGladiator = new Movie("Gladiator", PriceCodes.NewRelease);
+		Movie movCinderella = new Movie("Cinderella", childrens);
+		Movie movStarWars = new Movie("Star Wars", regular);
+		Movie movGladiator = new Movie("Gladiator", newRelease);
+
 
 		// Create customers
 		Customer custMickeyMouse = new Customer("Mickey Mouse");
@@ -25,6 +33,7 @@ class MainClass {
 		// Generate invoice
 		String statement = custMickeyMouse.Statement();
 
+		 HashMap
 		// Print the statement
 		System.out.println(statement);		
 	}
