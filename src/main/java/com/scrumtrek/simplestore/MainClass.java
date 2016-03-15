@@ -33,7 +33,6 @@ class MainClass {
 		// Generate invoice
 		String statement = custMickeyMouse.Statement();
 
-		 HashMap
 		// Print the statement
 		System.out.println(statement);		
 	}
